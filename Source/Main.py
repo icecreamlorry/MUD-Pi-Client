@@ -1,5 +1,12 @@
-# Actions Dictionary
-actions = {'inspect': 1, 'go': 2, 'use': 3, 'pick up': 4,}
+#Messy Actions Dictionary
+actions = { 'inspect' : 1,
+            'look' : 1,
+            'go': 2, 
+            'move': 2,
+            'walk': 2,
+            'use': 3, 
+            'pick up': 4,
+            'grab' : 4}
 
 
 playerInput = input("What do you want to do? ")
