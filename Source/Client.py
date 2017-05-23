@@ -1,6 +1,7 @@
 #import urllib.request
+
 def sendActionToServer(action, item):
-    print('sending action' + str(action) + ' item' + str(item))
+    print('~>sending action ' + str(action) + ' item ' + str(item))
     return
 
 def getPositionFromServer():
@@ -8,20 +9,20 @@ def getPositionFromServer():
 
 def getActionsFromServer():
     return {'inspect' : 1,
-    'look' : 1,
-    'go': 2,
-    'move': 2,
-    'walk': 2,
-    'use': 3,
-    'pick up': 4,
-    'grab' : 4}
+            'look' : 1,
+            'go': 2,
+            'move': 2,
+            'walk': 2,
+            'use': 3,
+            'pick up': 4,
+            'grab' : 4}
 
 def getItemsFromServer():
     return {'pypi' : 10,
-    'north' : 11,
-    'south' : 12,
-    'east' : 13,
-    'west' : 14}
+            'north' : 11,
+            'south' : 12,
+            'east' : 13,
+            'west' : 14}
 
 def ParseInput(inputstring, actions, items):
     _foundAction = ''
