@@ -1,6 +1,6 @@
 #import urllib.request
-def sendActionToServer (action, item):
-    print ('sending action' + str (action) + ' item' + str (item))
+def sendActionToServer(action, item):
+    print('sending action' + str(action) + ' item' + str(item))
     return
 
 def getPositionFromServer():
@@ -15,7 +15,7 @@ def getActionsFromServer():
     'use': 3,
     'pick up': 4,
     'grab' : 4}
-    
+
 def getItemsFromServer():
     return {'pypi' : 10,
     'north' : 11,
@@ -33,21 +33,21 @@ def ParseInput(inputstring, actions, items):
     for item in items:
         if item in inputstring:
             _foundItem = item
-    return (_foundAction, _foundItem)
+    return(_foundAction, _foundItem)
 
 while True:
     currentPosition = getPositionFromServer()
     currentActions = getActionsFromServer()
     currentItems = getItemsFromServer()
-    print ('you are in room ' + str(currentPosition))
-    playerInput = input ('what do you want to do? ')
+    print('you are in room ' + str(currentPosition))
+    playerInput = input('what do you want to do? ')
 
-    values = ParseInput (playerInput, currentActions, currentItems)
+    values = ParseInput(playerInput, currentActions, currentItems)
     foundAction = values[0]
     foundItem = values[1]
-    if (foundAction != '') and (foundItem != ''):
-        sendActionToServer (currentActions[foundAction], currentItems[foundItem])
-    elif (foundAction != '') and (foundItem == ''):
-        sendActionToServer (currentActions[foundAction], 0)
+    if(foundAction != '') and(foundItem != ''):
+        sendActionToServer(currentActions[foundAction], currentItems[foundItem])
+    elif(foundAction != '') and(foundItem == ''):
+        sendActionToServer(currentActions[foundAction], 0)
     else:
-        print ('no comprende')
+        print('no comprende')
