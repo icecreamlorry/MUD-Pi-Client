@@ -43,13 +43,8 @@ def ParseInput(inputstring):
 
 while True:
     playerInput = input('what will you do? ')
-
-    # instead of using bools AND strings lets just use a string
-    # later we can check if it's empty to see if we found anything
     foundAction = ''
     foundItem = ''
-    # now we need to actually call the function we just defined
-    # and get the values out
     values = ParseInput(playerInput)
     foundAction = values[0]
     foundItem = values[1]
