@@ -1,6 +1,5 @@
 # these two lines are requesting the file that Chris's Pi is serving!
-import urllib.request
-stevensNames = urllib.request.urlopen('http://2d77bf7a.ngrok.io/players').read().decode('ascii')
+
 
 actions = {'inspect' : 1,
            'look' : 1,
@@ -12,6 +11,7 @@ actions = {'inspect' : 1,
            'grab' : 4}
 
 items = {'pypi' : 10}
+
 
 # lets use a multi-line string so we only have to use one print
 # multi-line strings use '''
@@ -25,39 +25,41 @@ You fumble around eventually finding your trusty useful pypi
 *MULTIPLE SECURITY BREACHES*
 *MUTILPLE SECURITY BREACHES*''')
 
-playerInput = input('In the total darkness you hesitate for a moment,\
- #but you know that you must... ')
-
-# instead of using bools AND strings lets just use a string
-# later we can check if it's empty to see if we found anything
-foundAction = ''
-foundItem = ''
-
-# here we define a function, anything inside here we can use
-# repeatedly by calling its name ParseInput
-def ParseInput():
+def ParseInput(inputstring):
     # functions have their own variables that only exist
     # inside the function and can't be accessed from outside
     _foundAction = ''
     _foundItem = ''
 
     for action in actions:
-        if action in playerInput:
+        if action in inputstring:
             _foundAction = action
     for item in items:
-        if item in playerInput:
+        if item in inputstring:
             _foundItem = item
     # to get the data back out of the function we return it
     return (_foundAction, _foundItem)
 
-# now we need to actually call the function we just defined
-# and get the values out
-values = ParseInput()
-foundAction = values[0]
-foundItem = values[1]
 
-# if nothing was found the string will still be empty
-if (foundAction is not '') and (foundItem is not ''):
-    print('you ' + foundAction + ' the ' + foundItem)
-else:
-    print('protip: use pypi ya dang goobus')
+while True:
+    playerInput = input('what will you do? ')
+
+    # instead of using bools AND strings lets just use a string
+    # later we can check if it's empty to see if we found anything
+    foundAction = ''
+    foundItem = ''
+    # now we need to actually call the function we just defined
+    # and get the values out
+    values = ParseInput(playerInput)
+    foundAction = values[0]
+    foundItem = values[1]
+
+
+
+    # if nothing was found the string will still be empty
+    if (foundAction != '') and (foundItem != ''):
+        print('you ' + foundAction + ' the ' + foundItem + ' and your vision flickers back to life')
+    elif (foundAction != '') and (foundItem == ''):
+        print('you ' + foundAction)
+    else:
+        print('protip: use pypi ya dang goobus')
